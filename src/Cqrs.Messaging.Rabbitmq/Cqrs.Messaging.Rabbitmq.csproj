@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25CDC796-27E5-4493-A2CD-F8424258B5B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cqrs.Messaging.Rabbitmq</RootNamespace>
+    <AssemblyName>Cqrs.Messaging.Rabbitmq</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.1.0.0\lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyNetQ">
+      <HintPath>..\packages\EasyNetQ.0.39.1.332\lib\net40\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.3.2.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RabbitMQ.Client.3.4.0\lib\net35\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrokerConfigurationExtensions.cs" />
+    <Compile Include="EasyNetQContainerAdapter.cs" />
+    <Compile Include="EnvelopeContract.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RabbitMqCommandBus.cs" />
+    <Compile Include="RabbitMqCommandsConfigurator.cs" />
+    <Compile Include="RabbitMqEventsConfigurator.cs" />
+    <Compile Include="RabbitMqGateway.cs" />
+    <Compile Include="RabbitMqEventBus.cs" />
+    <Compile Include="RabbitMqGatewayFactory.cs" />
+    <Compile Include="TypeRegistrationModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Core\Commands.Core.csproj">
+      <Project>{f97f351b-9ced-4db0-a382-b9d02b58c8f5}</Project>
+      <Name>Commands.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.AntiCorruption\Cqrs.AntiCorruption.csproj">
+      <Project>{8BCD0EFC-529D-4280-9ED2-3EF46E051A6D}</Project>
+      <Name>Cqrs.AntiCorruption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Common\Cqrs.Common.csproj">
+      <Project>{178D8D10-B200-48D0-9C0A-B5B24D0DF010}</Project>
+      <Name>Cqrs.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.Core\Cqrs.Domain.Core.csproj">
+      <Project>{9E18BD46-7E80-468A-9452-C08F79CCBB84}</Project>
+      <Name>Cqrs.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.Eventing\Cqrs.Domain.Eventing.csproj">
+      <Project>{CFA3F851-EF50-4861-A5BD-DAA242DCB240}</Project>
+      <Name>Cqrs.Domain.Eventing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.JetBrainsAnnotations\JetBrains.Annotations.csproj">
+      <Project>{4D8AF5D2-4BE4-4FD0-8AE0-EEA8B0A0AEAC}</Project>
+      <Name>JetBrains.Annotations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Messaging.Amqp.Core\Cqrs.Messaging.Configuration.Amqp.csproj">
+      <Project>{7cc55e24-73c8-485a-8756-6f5028843ce6}</Project>
+      <Name>Cqrs.Messaging.Configuration.Amqp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Messaging.Core\Cqrs.Messaging.Core.csproj">
+      <Project>{7eec0905-75c8-4c57-985b-cc8acaa73112}</Project>
+      <Name>Cqrs.Messaging.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

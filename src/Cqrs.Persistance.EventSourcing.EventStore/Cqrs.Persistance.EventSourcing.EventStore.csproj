@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9CFC07F-5D6B-489C-9D1B-B133280503A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cqrs.Persistance.EventSourcing.EventStore</RootNamespace>
+    <AssemblyName>Cqrs.Persistance.EventSourcing.EventStore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.1.0.0\lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.ClientAPI, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EventStore.Client.3.0.1\lib\net40\EventStore.ClientAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EventStoreDataContext.cs" />
+    <Compile Include="EventStoreExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeRegistrationModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cqrs.Common\Cqrs.Common.csproj">
+      <Project>{178D8D10-B200-48D0-9C0A-B5B24D0DF010}</Project>
+      <Name>Cqrs.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.Core\Cqrs.Domain.Core.csproj">
+      <Project>{9E18BD46-7E80-468A-9452-C08F79CCBB84}</Project>
+      <Name>Cqrs.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.EventSourcing\Cqrs.Domain.EventSourcing.csproj">
+      <Project>{912390BD-0C43-4E13-A51E-8181DFF28978}</Project>
+      <Name>Cqrs.Domain.EventSourcing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.JetBrainsAnnotations\JetBrains.Annotations.csproj">
+      <Project>{4D8AF5D2-4BE4-4FD0-8AE0-EEA8B0A0AEAC}</Project>
+      <Name>JetBrains.Annotations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Persistance.EventSourcing.Core\Cqrs.Persistance.EventSourcing.Core.csproj">
+      <Project>{F1F6B894-1808-4FD0-AB30-F81679B8C1C4}</Project>
+      <Name>Cqrs.Persistance.EventSourcing.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

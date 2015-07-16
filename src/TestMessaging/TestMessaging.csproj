@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A47BBAD-6631-47A1-BFCB-4F34C4B3B13C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestMessaging</RootNamespace>
+    <AssemblyName>TestMessaging</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.1.0.0\lib\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyNetQ, Version=0.39.0.330, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EasyNetQ.0.39.1.332\lib\net40\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.ClientAPI">
+      <HintPath>..\packages\EventStore.Client.3.0.1\lib\net40\EventStore.ClientAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\packages\RabbitMQ.Client.3.4.0\lib\net35\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Core\Commands.Core.csproj">
+      <Project>{F97F351B-9CED-4DB0-A382-B9D02B58C8F5}</Project>
+      <Name>Commands.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.AntiCorruption\Cqrs.AntiCorruption.csproj">
+      <Project>{8BCD0EFC-529D-4280-9ED2-3EF46E051A6D}</Project>
+      <Name>Cqrs.AntiCorruption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Application\Cqrs.Application.csproj">
+      <Project>{D6D06472-6A25-47F0-9D3A-4BD07E5D8A34}</Project>
+      <Name>Cqrs.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.AutofacLocatorImplementation\Cqrs.AutofacLocatorImplementation.csproj">
+      <Project>{2CD2F5E2-FD15-4FF5-B12A-9C23340FEFCE}</Project>
+      <Name>Cqrs.AutofacLocatorImplementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.Core\Cqrs.Domain.Core.csproj">
+      <Project>{9E18BD46-7E80-468A-9452-C08F79CCBB84}</Project>
+      <Name>Cqrs.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.Eventing\Cqrs.Domain.Eventing.csproj">
+      <Project>{CFA3F851-EF50-4861-A5BD-DAA242DCB240}</Project>
+      <Name>Cqrs.Domain.Eventing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Domain.EventSourcing\Cqrs.Domain.EventSourcing.csproj">
+      <Project>{912390bd-0c43-4e13-a51e-8181dff28978}</Project>
+      <Name>Cqrs.Domain.EventSourcing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Messaging.Amqp.Core\Cqrs.Messaging.Configuration.Amqp.csproj">
+      <Project>{7CC55E24-73C8-485A-8756-6F5028843CE6}</Project>
+      <Name>Cqrs.Messaging.Configuration.Amqp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Messaging.Core\Cqrs.Messaging.Core.csproj">
+      <Project>{7EEC0905-75C8-4C57-985B-CC8ACAA73112}</Project>
+      <Name>Cqrs.Messaging.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Messaging.Rabbitmq\Cqrs.Messaging.Rabbitmq.csproj">
+      <Project>{25CDC796-27E5-4493-A2CD-F8424258B5B2}</Project>
+      <Name>Cqrs.Messaging.Rabbitmq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.ObjectMapping\Cqrs.ObjectMapping.csproj">
+      <Project>{681CFF3A-4067-48D9-BBAE-B7A746225758}</Project>
+      <Name>Cqrs.ObjectMapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Persistance.Core\Cqrs.Persistance.Core.csproj">
+      <Project>{a5044eff-e01a-4ab3-91ab-980b0511709a}</Project>
+      <Name>Cqrs.Persistance.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Persistance.EventSourcing.Core\Cqrs.Persistance.EventSourcing.Core.csproj">
+      <Project>{f1f6b894-1808-4fd0-ab30-f81679b8c1c4}</Project>
+      <Name>Cqrs.Persistance.EventSourcing.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Persistance.EventSourcing.EventStore\Cqrs.Persistance.EventSourcing.EventStore.csproj">
+      <Project>{a9cfc07f-5d6b-489c-9d1b-b133280503a9}</Project>
+      <Name>Cqrs.Persistance.EventSourcing.EventStore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Reporting.Core\Cqrs.Projection.Core.csproj">
+      <Project>{D8E3DA03-F82D-4A2B-A412-03169CB04120}</Project>
+      <Name>Cqrs.Projection.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrs.Reporting.EventStore\Cqrs.Projection.EventStore.csproj">
+      <Project>{E9108A3A-C057-471E-A83D-C46707F6BFED}</Project>
+      <Name>Cqrs.Projection.EventStore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  
+  
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
